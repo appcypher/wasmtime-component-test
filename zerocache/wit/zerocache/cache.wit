@@ -1,0 +1,13 @@
+/// The cache interface.
+interface cache {
+    use types.{payload, errno};
+
+    /// Gets a payload from the cache using the supplied key.
+    get: func(key: string) -> result<payload, errno>;
+
+    /// Puts a payload in the cache with the associated key.
+    set: func(key: string, value: payload, ttl: option<u32>) -> result<_, errno>;
+
+    /// Deletes a payload from the cache associated with the given key.
+    delete: func(key: string) -> result<_, errno>;
+}
