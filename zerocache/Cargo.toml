@@ -1,0 +1,16 @@
+[package]
+name = "zerocache"
+version = "0.1.0"
+keywords = []
+categories = []
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[dependencies]
+wasmtime = { version = "15.0.0", features = ["component-model"] }
+
+[dev-dependencies]
+wasmtime-wasi = "15.0.0"

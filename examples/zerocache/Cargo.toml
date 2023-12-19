@@ -1,0 +1,8 @@
+[package]
+name = "examples_zerocache"
+version = "0.1.0"
+keywords = []
+categories = []
+
+[dependencies]
+wit-bindgen = { git = "https://github.com/bytecodealliance/wit-bindgen", version = "0.16.0" }
