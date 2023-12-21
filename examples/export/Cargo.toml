@@ -1,0 +1,8 @@
+[package]
+name = "examples_export"
+version = "0.1.0"
+keywords = []
+categories = []
+
+[lib]
+crate-type = ["cdylib"]

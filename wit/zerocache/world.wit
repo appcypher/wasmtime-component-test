@@ -3,4 +3,5 @@ package zerosys:zerocache@0.1.0;
 /// Zerocache
 world zerocache {
     import cache;
+    export version;
 }

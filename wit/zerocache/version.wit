@@ -1,0 +1,5 @@
+/// Interface for checking the version.
+interface version {
+    /// Returns the version of the library. 
+    version: func() -> string;
+}

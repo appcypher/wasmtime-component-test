@@ -4,7 +4,7 @@ use wasmtime::{
     Config, Engine, Store,
 };
 use wasmtime_wasi::preview2::{self, Table, WasiCtx, WasiView};
-use zerocache::ZerocacheCtx;
+use zerocache::{ZerocacheCtx, Zerocache};
 
 struct Ctx {
     zerocache: ZerocacheCtx,
@@ -72,11 +72,8 @@ fn cache_component_command_linking() {
     let (command, _) =
         preview2::command::sync::Command::instantiate(&mut store, &component, &linker).unwrap();
 
-    // Get the cli/run function
-    let cli_run = command.wasi_cli_run();
-
-    // Run!
-    let _ = cli_run.call_run(&mut store).unwrap();
+    // Call the wasi:cli/run function
+    let _ = command.wasi_cli_run().call_run(&mut store).unwrap();
 }
 
 #[test]
@@ -117,8 +114,11 @@ fn cache_component_reactor_linking() {
     let component = Component::from_file(&engine, path).unwrap();
 
     // Instantiate the component.
-    let _instance = linker.instantiate(&mut store, &component).unwrap();
+    let (z, _) =
+        Zerocache::instantiate(&mut store, &component, &linker).unwrap();
 
-    // I have no idea how to get the "_start" function from the "__main_module__" module.
-    todo!()
+    // Get exported function
+    let result = z.zerosys_zerocache_version().call_version(store).unwrap();
+
+    println!("result: {:?}", result)
 }
