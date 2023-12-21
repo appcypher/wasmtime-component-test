@@ -10,11 +10,11 @@ use std::collections::HashMap;
 mod bindings {
     wasmtime::component::bindgen!({
         world: "zerocache",
-        path: "wit/zerocache"
+        path: "../wit/zerocache",
     });
 }
 
-pub use bindings::zerosys::zerocache::*;
+pub use bindings::{zerosys::zerocache::*, Zerocache};
 
 //--------------------------------------------------------------------------------------------------
 // Types

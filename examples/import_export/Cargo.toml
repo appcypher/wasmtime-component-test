@@ -1,5 +1,5 @@
 [package]
-name = "examples_simple"
+name = "examples_import_export"
 version = "0.1.0"
 keywords = []
 categories = []
